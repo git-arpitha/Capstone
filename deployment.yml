@@ -1,0 +1,26 @@
+# Create web hosts based on docker image
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capstone-project
+spec:
+  selector:
+    matchLabels:
+      app: capstone-project
+  replicas: 2
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: capstone-project
+    spec:
+      containers:
+      - name: capstone-project
+        image: justinfo/capstone
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
