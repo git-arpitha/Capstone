@@ -120,8 +120,8 @@ jobs:
              kubectl get pod -o wide
              kubectl apply -f services.yml
              kubectl get services
-             kubectl rollout restart deployment/capstone
-             kubectl describe svc capstone
+             kubectl rollout restart deployment/capstone-project
+             kubectl describe svc capstone-project
 
      
 workflows:
