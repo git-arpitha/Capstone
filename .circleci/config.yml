@@ -99,16 +99,16 @@ jobs:
             curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
             sudo mv /tmp/eksctl /usr/local/bin
 
-    #  - run:
-    #      name: Build AWS Kubernetes cluster
-    #      command: |
-    #        export TERM=xterm
-    #        aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
-    #        aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-    #        aws configure set default.region $AWS_DEFAULT_REGION
-    #        nohup aws cloudformation list-exports > output.txt
-    #        chmod 755 create_aws_kube_infra.sh
-    #        ./create_aws_kube_infra.sh
+      - run:
+          name: Build AWS Kubernetes cluster
+          command: |
+            export TERM=xterm
+            aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+            aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+            aws configure set default.region $AWS_DEFAULT_REGION
+            nohup aws cloudformation list-exports > output.txt
+            chmod 755 create_aws_kube_infra.sh
+            ./create_aws_kube_infra.sh
       
       - run:
           name: update kube cluster
